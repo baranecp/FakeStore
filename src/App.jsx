@@ -1,5 +1,5 @@
 import './App.css'
-import FetchData from '../services/FetchStore'
+import ProductList from './components/ProductList'
 
 function App() {
 
@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <h1>FakeStore</h1>
-      <FetchData />
+      <ProductList />
     </>
   )
 }

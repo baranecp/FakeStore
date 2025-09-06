@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 const BASE_URL = "https://fakestoreapi.com";
 
-const FetchData = () => {
+export function useFetchProducts() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -28,4 +28,4 @@ const FetchData = () => {
   }, []);
 
   return { data, loading, error };
-};
+}
