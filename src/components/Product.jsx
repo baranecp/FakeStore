@@ -1,6 +1,6 @@
 import { Button, Card, Image, Text } from "@chakra-ui/react"
 
-export default function Product({ title, price, image, description }) {
+export default function Product({ title, price, image, description, onAdd, onRemove }) {
     return (
         <Card.Root maxW="sm" overflow="hidden">
             <Image
@@ -19,7 +19,8 @@ export default function Product({ title, price, image, description }) {
                 <Text textStyle="2xl" fontWeight="medium" letterSpacing="tight" mt="2">
                     ${price}
                 </Text>
-                <Button variant="surface">Add to cart</Button>
+                <Button onClick={onAdd} variant="surface" color="green">Add to cart</Button>
+                <Button onClick={onRemove} variant="surface" color="red">Remove</Button>
             </Card.Footer>
         </Card.Root>
     )
