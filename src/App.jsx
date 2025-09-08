@@ -1,12 +1,13 @@
 import './App.css'
 import ProductList from './components/ProductList'
+import Navbar from './components/Navbar'
 
 function App() {
 
 
   return (
     <>
-      <h1>FakeStore</h1>
+      <Navbar />
       <ProductList />
     </>
   )

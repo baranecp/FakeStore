@@ -14,12 +14,12 @@ export default function Product({ title, price, image, description }) {
                 <Card.Description>
                     {description}
                 </Card.Description>
+            </Card.Body>
+            <Card.Footer gap="2">
                 <Text textStyle="2xl" fontWeight="medium" letterSpacing="tight" mt="2">
                     ${price}
                 </Text>
-            </Card.Body>
-            <Card.Footer gap="2">
-                <Button variant="ghost">Add to cart</Button>
+                <Button variant="surface">Add to cart</Button>
             </Card.Footer>
         </Card.Root>
     )
