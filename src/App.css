@@ -3,6 +3,7 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  background-color: hsl(0, 0%, 90%);
 }
 
 .logo {
@@ -45,6 +46,6 @@
   display: flex;
   justify-content: space-between;
   padding: 2rem;
-  background-color: hsl(0, 0%, 93%);
+  background-color: hsl(0, 0%, 90%);
   margin-bottom: 1rem;
 }
