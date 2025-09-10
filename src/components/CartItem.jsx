@@ -3,13 +3,13 @@ import { Text, Box, Button, HStack, Card, Image } from "@chakra-ui/react"
 
 
 export default function CartItem({ id, quantity }) {
-    const { removeFromCart, data, increaseCartQuantity, decreaseCartQuantity, cartQuantity } = useShoppingCart();
+    const { removeFromCart, data, increaseCartQuantity, decreaseCartQuantity } = useShoppingCart();
 
     const item = data?.find(i => i.id === id);
     if (!item) return null;
 
     return (
-        <Card.Root flexDirection="row" overflow="hidden" maxW="xl">
+        <Card.Root flexDirection="row" overflow="hidden" maxW="md" alignItems="center" shadow="md" justifyContent="center" margin="0 auto" padding="1">
             <Image
                 objectFit="cover"
                 maxW="200px"
@@ -18,11 +18,11 @@ export default function CartItem({ id, quantity }) {
             />
             <Box>
                 <Card.Body>
-                    <Card.Title mb="2">{item.title}</Card.Title>
+                    <Card.Title>{item.title}</Card.Title>
                 </Card.Body>
-                <HStack mb="4" padding="6">
+                <HStack padding="6">
                     <Button variant={"surface"} onClick={() => increaseCartQuantity(id)}>+</Button>
-                    <p>{cartQuantity}</p>
+                    <p>{quantity}</p>
                     <Button variant={"surface"} onClick={() => decreaseCartQuantity(id)} >-</Button>
                 </HStack>
                 <Card.Footer>

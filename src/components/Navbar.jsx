@@ -8,8 +8,8 @@ export default function Navbar() {
     return (
         <div className="menu">
             <h1>FakeStore</h1>
-            <nav>
-                <ul style={{ display: "flex", gap: "1rem", listStyle: "none" }}>
+            <nav style={{ display: "flex", alignItems: "center" }}>
+                <ul style={{ display: "flex", gap: "1rem", listStyle: "none", fontSize: "1.5rem" }}>
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/products">Products</Link></li>
                 </ul>

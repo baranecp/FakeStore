@@ -7,7 +7,7 @@ export default function ShoppingCart() {
     if (cartItems.length === 0) return <p>Cart is empty</p>;
 
     return (
-        <div>
+        <div style={{ display: "flex", gap: "1rem", flexWrap: 'wrap' }}>
             {cartItems.map(item =>
                 <CartItem key={item.id} {...item} />
             )}
