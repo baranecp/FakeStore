@@ -6,6 +6,8 @@ export function ShoppingCartProvider({ children }) {
     const { data, loading, error } = useFetchProducts();
     const [cartItems, setCartItems] = useState([])
 
+    const cartQuantity = cartItems.reduce((quantity, item) => item.quantity + quantity, 0)
+
     function getItemQuantity(id) {
         return cartItems.find(item => item.id === id)?.quantity || 0;
     }
@@ -38,7 +40,7 @@ export function ShoppingCartProvider({ children }) {
         setCartItems(currItems => currItems.filter(item => item.id !== id));
     }
 
-    return <ShoppingCartContext.Provider value={{ data, loading, error, cartItems, getItemQuantity, increaseCartQuantity, decreaseCartQuantity, removeFromCart }}>{children}</ShoppingCartContext.Provider>
+    return <ShoppingCartContext.Provider value={{ data, loading, error, cartQuantity, cartItems, getItemQuantity, increaseCartQuantity, decreaseCartQuantity, removeFromCart }}>{children}</ShoppingCartContext.Provider>
 
 }
 

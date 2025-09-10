@@ -2,7 +2,7 @@ import { Button, Card, Image, Text } from "@chakra-ui/react"
 
 export default function Product({ title, price, image, description, onAdd, onRemove }) {
     return (
-        <Card.Root maxW="sm" overflow="hidden">
+        <Card.Root maxW="sm" overflow="hidden" paddingTop="2.5" shadow="xl" >
             <Image
                 src={image}
                 alt="Green double couch with wooden legs"
