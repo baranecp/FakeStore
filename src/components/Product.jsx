@@ -16,11 +16,15 @@ export default function Product({ title, price, image, description, onAdd, onRem
                 </Card.Description>
             </Card.Body>
             <Card.Footer gap="2">
-                <Text textStyle="2xl" fontWeight="medium" letterSpacing="tight" mt="2">
+                <Text textStyle="2xl" fontWeight="medium" letterSpacing="tight" mt="2" color="green.700">
                     ${price}
                 </Text>
-                <Button onClick={onAdd} variant="surface" color="green">Add to cart</Button>
-                <Button onClick={onRemove} variant="surface" color="red">Remove</Button>
+                <Button onClick={onAdd} variant="surface" bg="green.500"
+                    _hover={{ bg: "green.600" }}
+                    color="white">Add to cart</Button>
+                <Button onClick={onRemove} variant="surface" bg="red.500"
+                    _hover={{ bg: "red.600" }}
+                    color="white">Remove</Button>
             </Card.Footer>
         </Card.Root>
     )

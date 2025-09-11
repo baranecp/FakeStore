@@ -1,5 +1,6 @@
 import { useShoppingCart } from "@/context/ShoppingCartContext";
-import { Text, Box, Button, HStack, Card, Image } from "@chakra-ui/react"
+import { Box, Button, Flex, Image, Text, HStack, VStack } from "@chakra-ui/react";
+
 
 
 export default function CartItem({ id, quantity }) {
@@ -9,30 +10,79 @@ export default function CartItem({ id, quantity }) {
     if (!item) return null;
 
     return (
-        <Card.Root flexDirection="row" overflow="hidden" maxW="sm" alignItems="center" shadow="md" justifyContent="center" margin="0 auto" padding="1">
-            <Image
-                objectFit="cover"
-                maxW="100px"
-                src={item.image}
-                alt="Caffe Latte"
-            />
-            <Box>
-                <Card.Body>
-                    <Card.Title>{item.title}</Card.Title>
-                </Card.Body>
-                <HStack padding="6">
-                    <Button variant={"surface"} onClick={() => increaseCartQuantity(id)}>+</Button>
-                    <p>{quantity}</p>
-                    <Button variant={"surface"} onClick={() => decreaseCartQuantity(id)} >-</Button>
+        <Flex
+            p={4}
+            borderWidth="1px"
+            borderRadius="lg"
+            shadow="sm"
+            _hover={{ shadow: "md" }}
+            bg="white"
+            _dark={{ bg: "gray.700" }}
+            align="center"
+            gap={4}
+            w="100%"
+            maxW="md"
+            direction={{ base: "column", md: "row" }}
+        >
+            <Box flexShrink={0}>
+                <Image
+                    src={item.image}
+                    alt={item.title}
+                    maxH="120px"
+                    maxW="120px"
+                    objectFit="contain"
+                    borderRadius="md"
+                />
+            </Box>
+            <VStack flex="1" align="stretch" gap={3}>
+                <Text fontWeight="bold" fontSize="lg" noOfLines={2}>
+                    {item.title}
+                </Text>
+                <HStack gap={3} align="center">
+                    <Button
+                        size="sm"
+                        borderRadius="full"
+                        w="32px"
+                        h="32px"
+                        bg="red.500"
+                        color="white"
+                        _hover={{ bg: "red.600" }}
+                        onClick={() => decreaseCartQuantity(id)}
+                    >
+                        -
+                    </Button>
+                    <Text fontWeight="medium" textAlign="center" minW="24px">
+                        {quantity}
+                    </Text>
+                    <Button
+                        size="sm"
+                        borderRadius="full"
+                        w="32px"
+                        h="32px"
+                        bg="green.500"
+                        color="white"
+                        _hover={{ bg: "green.600" }}
+                        onClick={() => increaseCartQuantity(id)}
+                    >
+                        +
+                    </Button>
                 </HStack>
-                <Card.Footer>
-                    <Text textStyle="2xl" fontWeight="medium" letterSpacing="tight" mt="2">
+                <Flex justify="space-between" align="center">
+                    <Text fontWeight="semibold" fontSize="md">
                         ${(item.price * quantity).toFixed(2)}
                     </Text>
-                    <Button variant="surface" color="red" onClick={() => removeFromCart(id)}>Remove</Button>
-                </Card.Footer>
-            </Box>
-        </Card.Root>
+                    <Button
+                        size="sm"
+                        bg="red.500"
+                        color="white"
+                        _hover={{ bg: "red.600" }}
+                        onClick={() => removeFromCart(id)}
+                    >
+                        Remove
+                    </Button>
+                </Flex>
+            </VStack>
+        </Flex>
     );
 }
 

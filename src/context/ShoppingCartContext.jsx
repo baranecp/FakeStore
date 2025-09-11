@@ -13,6 +13,9 @@ export function ShoppingCartProvider({ children }) {
         return sum + (item?.price || 0) * cartItem.quantity
     }, 0)
 
+    const clearCart = () => setCartItems([])
+
+
     function getItemQuantity(id) {
         return cartItems.find(item => item.id === id)?.quantity || 0;
     }
@@ -45,7 +48,7 @@ export function ShoppingCartProvider({ children }) {
         setCartItems(currItems => currItems.filter(item => item.id !== id));
     }
 
-    return <ShoppingCartContext.Provider value={{ data, total, loading, error, cartQuantity, cartItems, getItemQuantity, increaseCartQuantity, decreaseCartQuantity, removeFromCart }}>{children}</ShoppingCartContext.Provider>
+    return <ShoppingCartContext.Provider value={{ data, total, clearCart, loading, error, cartQuantity, cartItems, getItemQuantity, increaseCartQuantity, decreaseCartQuantity, removeFromCart }}>{children}</ShoppingCartContext.Provider>
 
 }
 
