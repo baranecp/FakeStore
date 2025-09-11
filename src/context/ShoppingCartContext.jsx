@@ -8,6 +8,11 @@ export function ShoppingCartProvider({ children }) {
 
     const cartQuantity = cartItems.reduce((quantity, item) => item.quantity + quantity, 0)
 
+    const total = cartItems.reduce((sum, cartItem) => {
+        const item = data.find(i => i.id === cartItem.id)
+        return sum + (item?.price || 0) * cartItem.quantity
+    }, 0)
+
     function getItemQuantity(id) {
         return cartItems.find(item => item.id === id)?.quantity || 0;
     }
@@ -40,7 +45,7 @@ export function ShoppingCartProvider({ children }) {
         setCartItems(currItems => currItems.filter(item => item.id !== id));
     }
 
-    return <ShoppingCartContext.Provider value={{ data, loading, error, cartQuantity, cartItems, getItemQuantity, increaseCartQuantity, decreaseCartQuantity, removeFromCart }}>{children}</ShoppingCartContext.Provider>
+    return <ShoppingCartContext.Provider value={{ data, total, loading, error, cartQuantity, cartItems, getItemQuantity, increaseCartQuantity, decreaseCartQuantity, removeFromCart }}>{children}</ShoppingCartContext.Provider>
 
 }
 

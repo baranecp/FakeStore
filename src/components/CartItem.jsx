@@ -9,10 +9,10 @@ export default function CartItem({ id, quantity }) {
     if (!item) return null;
 
     return (
-        <Card.Root flexDirection="row" overflow="hidden" maxW="md" alignItems="center" shadow="md" justifyContent="center" margin="0 auto" padding="1">
+        <Card.Root flexDirection="row" overflow="hidden" maxW="sm" alignItems="center" shadow="md" justifyContent="center" margin="0 auto" padding="1">
             <Image
                 objectFit="cover"
-                maxW="200px"
+                maxW="100px"
                 src={item.image}
                 alt="Caffe Latte"
             />

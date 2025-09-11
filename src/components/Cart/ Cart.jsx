@@ -7,13 +7,13 @@ import { Link } from "react-router";
 export default function Cart({ quantity }) {
 
     return (
-        <Button variant="ghost" className="btn__cart">
-            <Link to="/cart">
-                <Icon size="lg">
+        <Link to="/cart">
+            <Button variant="ghost" className="btn__cart">
+                <Icon size="xl">
                     <FiShoppingCart />
                 </Icon>
-                <div className="shoppingcount">{quantity}</div>
-            </Link>
-        </Button>
+                <div className={quantity > 0 ? "shoppingcount" : ''}>{quantity > 0 ? quantity : null}</div>
+            </Button>
+        </Link>
     )
 }
