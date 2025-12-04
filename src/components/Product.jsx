@@ -28,6 +28,7 @@ export default function Product({ id, title, price, image, description, onAdd })
                     objectFit="contain"
                     maxH="220px"
                     w="100%"
+                    loading="lazy"
                 />
             </Box>
             <VStack align="stretch" spacing={3} mt={4}>
