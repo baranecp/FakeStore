@@ -1,4 +1,5 @@
 # FakeStore
+![FakeStore Preview](./public/preview.png)
 
 A React-based e-commerce application that fetches products from the [Fake Store API](https://fakestoreapi.com/) and allows users to browse products and manage a shopping cart.
 
