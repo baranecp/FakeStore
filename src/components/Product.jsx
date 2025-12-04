@@ -1,6 +1,9 @@
 import { Box, Image, Text, VStack, HStack, Button, Flex } from "@chakra-ui/react";
+import { useShoppingCart } from "@/context/ShoppingCartContext";
 
-export default function Product({ title, price, image, description, onAdd, onRemove }) {
+export default function Product({ id, title, price, image, description, onAdd }) {
+    const { cartItems, increaseCartQuantity, decreaseCartQuantity } = useShoppingCart();
+    const quantity = cartItems.find(i => i.id === id)?.quantity || 0;
     return (
         <Box
             bg="#1a1a1a"
@@ -33,7 +36,7 @@ export default function Product({ title, price, image, description, onAdd, onRem
             </VStack>
             <Flex justify="space-between" align="center" mt={4}>
                 <Text fontSize="xl" fontWeight="bold" color="green.400">${price}</Text>
-                <HStack spacing={2}>
+                {quantity === 0 ? (
                     <Button
                         size="sm"
                         colorScheme="green"
@@ -42,15 +45,39 @@ export default function Product({ title, price, image, description, onAdd, onRem
                     >
                         Add
                     </Button>
-                    <Button
-                        size="sm"
-                        colorScheme="red"
-                        _hover={{ transform: "scale(1.05)", boxShadow: "0 0 8px red" }}
-                        onClick={onRemove}
-                    >
-                        Remove
-                    </Button>
-                </HStack>
+                ) : (
+                    <HStack spacing={2}>
+                        <Button
+                            size="sm"
+                            w="32px"
+                            h="32px"
+                            bg="red.500"
+                            color="white"
+                            borderRadius="full"
+                            _hover={{ bg: "red.600", boxShadow: "0 0 8px red" }}
+                            onClick={() => decreaseCartQuantity(id)}
+                        >
+                            -
+                        </Button>
+
+                        <Text fontWeight="medium" minW="24px" textAlign="center" color="gray.200">
+                            {quantity}
+                        </Text>
+
+                        <Button
+                            size="sm"
+                            w="32px"
+                            h="32px"
+                            bg="green.500"
+                            color="white"
+                            borderRadius="full"
+                            _hover={{ bg: "green.600", boxShadow: "0 0 8px green" }}
+                            onClick={() => increaseCartQuantity(id)}
+                        >
+                            +
+                        </Button>
+                    </HStack>
+                )}
             </Flex>
         </Box>
     );
